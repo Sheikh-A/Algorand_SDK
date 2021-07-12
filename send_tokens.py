@@ -16,6 +16,9 @@ headers = {
 acl = algod.AlgodClient(algod_token, algod_address, headers)
 min_balance = 100000 #https://developer.algorand.org/docs/features/accounts/#minimum-balance
 
+##CHECK ALGORAND EXPLORER
+#https://testnet.algoexplorer.io/address/4JEELMNHUZKGDOXG2PHHOQGC64NZQPGFJQ3OFT4RSRALRVCZUWOHJUJCOQ
+
 sender_pk = '4JEELMNHUZKGDOXG2PHHOQGC64NZQPGFJQ3OFT4RSRALRVCZUWOHJUJCOQ'
 private_key = 'aBtxTruCiGImBYBYBEZyY5gyHT1YE4l4iwIKOEtH7WHiSEWxp6ZUYbrm0853QML3G5g8xUw24s+RlEC41FmlnA=='
 
