@@ -16,6 +16,9 @@ headers = {
 acl = algod.AlgodClient(algod_token, algod_address, headers)
 min_balance = 100000 #https://developer.algorand.org/docs/features/accounts/#minimum-balance
 
+sender_pk = '4JEELMNHUZKGDOXG2PHHOQGC64NZQPGFJQ3OFT4RSRALRVCZUWOHJUJCOQ'
+private_key = 'aBtxTruCiGImBYBYBEZyY5gyHT1YE4l4iwIKOEtH7WHiSEWxp6ZUYbrm0853QML3G5g8xUw24s+RlEC41FmlnA=='
+
 def send_tokens( receiver_pk, tx_amount ):
     params = acl.suggested_params()
     gen_hash = params.gh
@@ -24,6 +27,14 @@ def send_tokens( receiver_pk, tx_amount ):
     last_valid_round = params.last
 
     #Your code here
+    #From Algorand SDK
+    sender_pk = '4JEELMNHUZKGDOXG2PHHOQGC64NZQPGFJQ3OFT4RSRALRVCZUWOHJUJCOQ'
+    #SDK instructions
+    tx = transaction.PaymentTxn(sender=sender_pk, fee=tx_fee, first=first_valid_round, last=last_valid_round, gh=gen_hash, receiver=receiver_pk, amt=tx_amount, )
+    #PRIVATE KEY
+    signed = tx.sign('aBtxTruCiGImBYBYBEZyY5gyHT1YE4l4iwIKOEtH7WHiSEWxp6ZUYbrm0853QML3G5g8xUw24s+RlEC41FmlnA==')
+    txid = tx.get_txid()
+    acl.send_transaction(txn=signed)
 
     return sender_pk, txid
 
